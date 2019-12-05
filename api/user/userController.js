@@ -43,8 +43,5 @@ module.exports = {
   },
   show: async (req, res) => {
     res.json(await User.findById(req.params.id));
-  },
-  showBarcode: async (req, res) => {
-    res.json(await User.findOne({ idPasien: req.params.barcode }));
   }
 };

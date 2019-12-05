@@ -18,5 +18,8 @@ module.exports = {
 
     const newPasien = await Pasien.create(_newPasien);
     res.json(newPasien);
+  },
+  showBarcode: async (req, res) => {
+    res.json(await Pasien.findOne({ idPasien: req.params.barcode }));
   }
 };
