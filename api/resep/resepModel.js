@@ -9,8 +9,9 @@ const ResepSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Obat"
   },
-  takaran: String,
+  takaran: Number,
   keterangan: String,
+  harga: Number,
   terbayar: {
     type: Boolean,
     default: false

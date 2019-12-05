@@ -1,4 +1,5 @@
 const Resep = require("./resepModel");
+const Obat = require("../obat/obatModel");
 
 module.exports = {
   index: async (req, res) => {
@@ -10,8 +11,13 @@ module.exports = {
     );
   },
   store: async (req, res) => {
-    const newResep = await Resep.create(req.body);
+    let _newResep = req.body;
+    const obat = await Obat.findById(req.body.obat);
+    _newResep.harga = req.body.takaran * obat.harga;
+    const newResep = await Resep.create(_newResep);
     res.json(newResep);
+    obat.stok = obat.stok - req.body.takaran;
+    await obat.save();
   },
   update: async (req, res) => {
     const { pasien } = req.query;
