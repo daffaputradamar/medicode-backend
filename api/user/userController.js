@@ -40,5 +40,11 @@ module.exports = {
   store: async (req, res) => {
     const newUser = await User.create(req.body);
     res.json(newUser);
+  },
+  show: async (req, res) => {
+    res.json(await User.findById(req.params.id));
+  },
+  showBarcode: async (req, res) => {
+    res.json(await User.findOne({ idPasien: req.params.barcode }));
   }
 };

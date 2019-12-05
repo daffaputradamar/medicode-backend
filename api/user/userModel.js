@@ -5,8 +5,8 @@ const UserSchema = new mongoose.Schema({
   password: String,
   nama: String,
   jenisKelamin: String,
-  Alamat: String,
-  tanggalTerdafar: {
+  alamat: String,
+  tanggalTerdaftar: {
     type: Date,
     default: Date.now()
   },
